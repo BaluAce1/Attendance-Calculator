@@ -113,7 +113,7 @@ import java.text.DecimalFormat;
  
  
  }
- public class AtndCalc {
+ public class Main {
  public static void main(String[] args) { 
  Scanner sc = new Scanner(System.in);
  int input = 1;
@@ -122,7 +122,7 @@ import java.text.DecimalFormat;
  do {
  System.out.println("Welcome to Attendance Calculator ");
  System.out.println("1.Attendance input");
- System.out.println("2.Attendance");
+ System.out.println("2.Display Attendance");
  System.out.println("3.Days Predictor for Attendance");
  System.out.println("4.Attendance Increment and Reduction ");
  System.out.println("0.Exit");
@@ -201,6 +201,8 @@ while(cal.custmAttd(req) == false) {
  }
  
  break;
+ case 0:
+     break;
  default:
  System.out.println("Please Enter correct Option");
  
@@ -210,5 +212,6 @@ while(cal.custmAttd(req) == false) {
  }
  while(input != 0);
  sc.close();
+ System.out.println("Exiting.....");
  }
  }
