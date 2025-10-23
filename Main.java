@@ -1,6 +1,7 @@
 import java.text.DecimalFormat;
  import java.util.Scanner;
  class Calc {
+ static Scanner dc = new Scanner(System.in);
  double prcnt = 0.00;
  private int total = 0;
  private int attended = 0;
@@ -11,10 +12,9 @@ import java.text.DecimalFormat;
  this.attended = num2;
  this.periods = periods;
  this.periods1 = periods1;
+ this.prcnt = ((double)num2 / num1) * 100 ;
  }
  public void AttdCalc() {
- double prcnt = ((double) attended / total) * 100;
- this.prcnt = prcnt;
  DecimalFormat df = new DecimalFormat("#.00");
  String prcnt_str = df.format(prcnt);
  System.out.println("Your Attendance is " + prcnt_str + " % ");
@@ -76,6 +76,7 @@ import java.text.DecimalFormat;
  
  }
  public void Increment(int input ) {
+ 
  double increment = 0;
  if(periods){
  increment = ((((double)attended + (input * periods1) ) ) / (total + (input * periods1)) ) * 100; 
@@ -89,8 +90,22 @@ import java.text.DecimalFormat;
  String increase_perc = cf.format((increment) - prcnt );
  System.out.println("You will have " + increase + " % ");
  System.out.println("Increment == + " + increase_perc + " % ");
- 
- 
+ System.out.println("Would you like to retain this as default attendance ? ");
+ System.out.println("1.Yes");
+ System.out.println("2.No");
+ int dec = dc.nextInt();
+ while(inputhandle(dec)){
+    System.out.println("Please Enter correct Input ");
+    dec = dc.nextInt();
+
+ }
+ if(dec == 1) {
+    total += (periods1 * input);
+    attended += (periods1 * input );
+    prcnt = ((double)attended / total) * 100 ;
+    
+      
+ }
  }
  public void Decrement(int input ) {
  double Decrement = 0;
@@ -106,6 +121,19 @@ import java.text.DecimalFormat;
  String decrease_perc = bf.format((prcnt-Decrement));
  System.out.println("You will have " +decrease + " % ");
  System.out.println("Decrement == - " + decrease_perc + " % ");
+ System.out.println("Would you like to retain this as default attendance ? ");
+ System.out.println("1.Yes");
+ System.out.println("2.No");
+ int dec = dc.nextInt();
+ while(inputhandle(dec)){
+    System.out.println("Please Enter correct Input ");
+    dec = dc.nextInt();
+
+ }
+ if(dec == 1) {
+    total += (periods1 * input);
+    prcnt = ((double)attended / total) * 100 ;
+ }
  
  
  }
@@ -212,6 +240,7 @@ while(cal.custmAttd(req) == false) {
  }
  while(input != 0);
  sc.close();
+ Calc.dc.close();
  System.out.println("Exiting.....");
  }
- }
+ } 
